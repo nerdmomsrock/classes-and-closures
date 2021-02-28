@@ -152,25 +152,28 @@ class ProgressiveManager extends Manager {
         - This function returns an anonymous function that is called when the machine is done rebooting
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
-// class Machine {
-//   constructor () {
-//   this.widgets_made_count = 0;
-//   this.wear_and_tear_count = 0;
-//   this.needs_reboot = false;
-// }
-// makeWidgets (number) {
-//   this.widgets_made_count += number;
-//   this.wear_and_tear_count + 50 ++
-// }
-// fixMachine () {
-//   this.needs_reboot = true;
-// }
-// reboot () {
-//    {
-//     this.wear_and_tear_count -= 10;
-//     this.needs_reboot = false;
-//   }
-// }
+class Machine {
+  constructor () {
+  this.widgets_made_count = 0;
+  this.wear_and_tear_count = 0;
+  this.needs_reboot = false;
+}
+makeWidgets (number) {
+  this.widgets_made_count += number;
+  this.wear_and_tear_count = Math.floor(this.widgets_made_count/50);
+}
+fixMachine () {
+  this.needs_reboot = true;
+}
+reboot () {
+  return () => {
+    this.wear_and_tear_count -= 10;
+    this.needs_reboot = false;
 
-// }
+  }
+   
+  
+}
+
+}
 //Code Here
